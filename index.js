@@ -1,18 +1,19 @@
-let myStr =
+let myLongStr =
   'Lorem". ipsum, dolor! sit? amet: consectetur; adipisicing elit. Dolores quas alias animi inventore delectus quo non, fugit officiis a repellendus facere quae perferendis quos doloremque in, accusantium eum sint corrupti similique voluptatibus omnis mollitia id ex. Adipisci temporibus laborum fugit aperiam, minima recusandae nemo! Voluptas, fugiat sunt saepe dignissimos quam possimus vero voluptatibus quas commodi ipsa vitae, est error voluptate ex cum? Ab, numquam doloremque sunt id molestias explicabo tenetur? Corporis, quisquam voluptatem doloremque itaque est quod impedit, commodi illo eius dicta, enim reiciendis quidem minus tempora sapiente ratione. Repudiandae tempora officia voluptate nam cum dolore corrupti dolorem asperiores quisquam dicta, officiis distinctio ad possimus earum rerum ipsam veritatis enim voluptatum ea numquam doloremque deleniti sapiente velit maxime. Temporibus nostrum perspiciatis molestiae tempora, quo molestias numquam atque obcaecati unde quos itaque modi fugiat dolorem non rerum harum, esse, impedit voluptas minus? Deleniti atque reiciendis voluptate aut consequuntur blanditiis dolores dolorem magni adipisci eius unde, rerum explicabo labore molestias non et exercitationem mollitia iure. Est libero recusandae et, animi sunt a blanditiis consequuntur nemo iste laudantium quos sint ipsa ad possimus sequi dolor ipsum mollitia facilis? Officia quasi rerum atque esse voluptatum quae eos! Sequi eum repellat, molestiae enim soluta quos, tempora recusandae nulla facere quae assumenda harum modi laboriosam. Earum error aspernatur explicabo? Earum non, nesciunt distinctio quod dolores facere, placeat consectetur illum omnis eligendi ullam! Totam laudantium voluptates esse inventore molestias sapiente corrupti temporibus iure! Explicabo laudantium repellendus ullam laboriosam. Odit nostrum sit autem at laboriosam? Autem cupiditate facilis dolore nemo perferendis facere! Maiores iure voluptas obcaecati nihil. Rerum dignissimos fugit a dolorem earum soluta, ut at ullam repudiandae sunt';
 
-let wordList = (str, subStr) => {
+let wordsList = (str, subStr) => {
   let reg = new RegExp('\\.|,|\\?|!|:|;|"', "gui");
   let arr = str
     .replace(reg, "")
     .toLowerCase()
     .split(" ")
-    .filter((item) => item.indexOf(subStr) > -1);
+    .filter((arrItem) => arrItem.indexOf(subStr) > -1);
   let res = new Set();
 
-  arr.array.forEach((item) => {
-    res.add(item);
+  arr.forEach((arrItem) => {
+    res.add(arrItem);
   });
+
   return res;
 };
 
@@ -68,6 +69,14 @@ let getLocalDay = (d) => {
   return day;
 };
 
+let getDateAgo = (d, days) => {
+  const date = new Date(d);
+
+  date.setDate(date.getDate() - days);
+
+  return date.toLocaleString().replace(/(\d.*),\s+(\d.*)/gu, "$1");
+};
+
 let Car = function (engine, model, name, year) {
   this.engine = engine;
   this.model = model;
@@ -120,3 +129,7 @@ function test2() {
 
   myLongStr.replace(reg, "");
 }
+
+console.log(testPerformance(100, test1));
+console.log(testPerformance(100, test2));
+console.log(testPerformance(100, 12345));
